@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 import com.reg.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepositoryImplementation<User, Integer> {
+public interface UserRepository extends JpaRepositoryImplementation<User, Long> {
 
-	@Query("select u from User u where u.email=?1")
+	@Query("from User u where u.email =:email")
 	User checkEmail(String email);
 	
-	@Query("select u from User u where u.password=?1")
+	@Query("select u from User u where u.password= :pass")
 	User checkPass(String pass);
 }
